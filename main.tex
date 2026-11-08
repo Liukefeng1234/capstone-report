@@ -1,0 +1,142 @@
+\documentclass[a4paper,oneside,12pt]{book}
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION (used on the title page and in the PDF metadata)
+%----------------------------------------------------------------------------------------
+\newcommand{\thesistitle}{Modern Delay-Tolerant Email}
+\newcommand{\degree}{Integrated Computer Science}
+\newcommand{\typeofthesis}{Dissertation}
+\newcommand{\authorname}{John Liu}
+%% Do not put your Student ID in the document.
+\newcommand{\supervisor}{Stephen Farrell}
+\newcommand{\keywords}{Delay-Tolerant Networking, DTN, Email}
+\newcommand{\school}{School of Computer Science and Statistics}
+\newcommand{\submissiondate}{\today} % replace with a fixed date, e.g. April 10, 2027
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+%% Font: Palatino for text and maths
+\usepackage{mathpazo}
+
+%% Page size and margins
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm,headheight=16pt]{geometry}
+\setlength{\marginparwidth}{2cm}
+
+%% Citations: numbered, in round brackets, e.g. (1, 2)
+\usepackage[numbers,round,sort&compress]{natbib}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[autostyle=true]{csquotes}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage[parfill]{parskip}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{url}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{hyperxmp}
+\usepackage{titlesec}
+
+\numberwithin{equation}{chapter}
+\pagestyle{plain}
+
+\definecolor{tcd_blue}{RGB}{0, 101, 157}
+
+%% Code listings
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  columns=fullflexible,
+  frame=none,
+  showstringspaces=false
+}
+
+%% Captions: "Figure 3.1: ..." in normal text
+\captionsetup{labelsep=colon, font=normalsize}
+
+%----------------------------------------------------------------------------------------
+%	HEADING STYLES
+%----------------------------------------------------------------------------------------
+%% Chapter headings look like:   1  |  Introduction   (blue bar)
+\titleformat{\chapter}[hang]
+  {\normalfont\huge\bfseries}
+  {\thechapter\hspace{0.5cm}{\color{tcd_blue}\textbar}}
+  {0.5cm}
+  {}
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+%% Unnumbered chapters (Contents, Abstract, Bibliography, ...)
+\titleformat{name=\chapter,numberless}[hang]
+  {\normalfont\huge\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{name=\chapter,numberless}{0pt}{50pt}{40pt}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%----------------------------------------------------------------------------------------
+%	PDF METADATA
+%----------------------------------------------------------------------------------------
+\title{\thesistitle}
+\author{\authorname}
+
+\hypersetup{
+   pdftitle=\thesistitle,
+   pdfauthor=\authorname,
+   pdfkeywords=\keywords,
+   pdfsubject=\degree,
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+\frontmatter
+
+\input{title/title.tex}
+
+\onehalfspacing
+\raggedright
+
+\input{frontmatter/declaration.tex}
+\input{frontmatter/abstract.tex}
+\input{frontmatter/acknowledgements.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\input{frontmatter/abbreviations.tex}
+
+\mainmatter
+\input{chapters/introduction.tex}
+\input{chapters/literature_review.tex}
+\input{chapters/system_design.tex}
+\input{chapters/implementation.tex}
+\input{chapters/results.tex}
+\input{chapters/conclusion.tex}
+
+%% Uncomment these two lines once you have at least one \cite{...} in the text
+%% (an empty bibliography stops LaTeX from compiling).
+% \bibliographystyle{unsrtnat}
+% \bibliography{bibs/references}
+
+\appendix
+\renewcommand{\thechapter}{A\arabic{chapter}}
+\input{chapters/appendix.tex}
+
+\end{document}
